@@ -4,14 +4,15 @@ Import MyFitnessPal nutrition information into Apple HealthKit.
 
 ## How It Works
 
-The problem: MyFitnessPal only writes *new* data to HealthKit, not all the
-previous nutrition data you have.
+The problem: After allowing MyFitnessPal to write nutrition data to HealthKit
+only newly logged food will be written. The previous entries are not synced
+into HealthKit.
 
 This program traverses your food diary, *edits* the last food entry in each
-meal, and then saves it. This forces MyFitnessPal into thinking that the data
-is new.
+meal, and saves it. MyFitnessPal will consider the data to be *new*, and write
+it to HealthKit.
 
-**The data in your food diary is not altered.**
+**The entries in your food diary are not altered.**
 
 ## Requirements
 
@@ -19,9 +20,9 @@ is new.
 * [Selenium](http://www.seleniumhq.org)
 * [Chrome](https://www.google.com/chrome/) and
   [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/)
-* An ad-blocker extension for Chrome. uBlock Origin is recommend.
+* An ad-blocker extension for Chrome. uBlock Origin is recommended.
 
-  You will need the `.crx` file, which you can download from [this
+  You will need the `.crx` file, which can be downloaded from [this
   website](http://chrome-extension-downloader.com) by searching for extension
   ID `cjpalhdlnbpafiamejdnhcphjbkeiagm`.
 
@@ -38,7 +39,7 @@ is new.
    
    You can switch to another application and allow `myfitnesspal-healthkit.py`
    and its Chrome process to run in the background.
-5. After your entire food diary has been traversed, stop
+5. After your entire food diary has been traversed, stop the
    `myfitnesspal-healthkit.py` program by using `Control-C`.
 6. Open MyFitnessPal on your iOS device. You should see the network activity
    indicator spinning, as the app is downloading the *updates* to your food
